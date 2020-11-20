@@ -37,8 +37,8 @@ class BooksController extends AbstractFOSRestController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $extension = explode('/', $bookDto->base64Image)[1];
-            $data = explode(',', $bookDto->image);
+            $extension = explode('/', mime_content_type($bookDto->base64Image))[1];
+            $data = explode(',', $bookDto->base64Image);
             $filename = sprintf('%s.%s', uniqid('book_', true), $extension);
             $defaultStorage->write($filename, base64_decode($data[1]));
             $book = new Book();
