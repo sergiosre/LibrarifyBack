@@ -1,5 +1,7 @@
 <?php
 
+namespace App\serializer;
+
 use App\Entity\Book;
 use Symfony\Component\HttpFoundation\UrlHelper;
 use Symfony\Component\Serializer\Normalizer\ContextAwareNormalizerInterface;
