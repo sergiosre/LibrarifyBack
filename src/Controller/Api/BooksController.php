@@ -37,10 +37,12 @@ class BooksController extends AbstractFOSRestController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $filename = $fileUploader->uploadBase64File($bookDto->base64Image);
             $book = new Book();
             $book->setTitle($bookDto->title);
-            $book->setImage($filename);
+            if ($bookDto->base64Image) {
+                $filename = $fileUploader->uploadBase64File($bookDto->base64Image);
+                $book->setImage($filename);
+            }
             $entityManager->persist($book);
             $entityManager->flush();
             return $book;
