@@ -1,6 +1,6 @@
 <?php
 
-namespace App\serializer;
+namespace App\Serializer;
 
 use App\Entity\Book;
 use Symfony\Component\HttpFoundation\UrlHelper;
